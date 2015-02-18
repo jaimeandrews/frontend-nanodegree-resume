@@ -1,5 +1,3 @@
-
-//$("#main").append("Jaime Andrews");
 var bio ={"name" :"Jaime Andrews","role" : "Ingeniero en Informatica" ,
 	"contacts": {
 	"mobile":"96427367", 
@@ -9,8 +7,8 @@ var bio ={"name" :"Jaime Andrews","role" : "Ingeniero en Informatica" ,
 	"location": " Santiago de Chile"
 	},
 	"welcomeMessage":"Welcome to my page",
-	"pictureUrl" :"https://gp3.googleusercontent.com/-5dheV2IgTdU/AAAAAAAAAAI/AAAAAAAAAAA/qXGsbZnjgEI/s48-c-k-no/photo.jpg" , 
-	"skills" :["Developer", "Python", "JS", "C++"]	}
+	"pictureUrl" :"images/fry.jpg" , 
+	"skills" :["Técnico Electronico", "Ingeniero en Informatica", "Analista de Planificación", "Front-End Developer"]	}
 var work ={ 
 	"jobs":[
 	{
@@ -55,14 +53,23 @@ var projects ={
 			"dates":"Febrero de 2015",
 			"description": "Sistema de ingreso de pacientes de podología",
 			"images": [ "url1","url2","url3"]
-		}
-
+		},
+		{
+			"tittle":"Sistema de Ingreso pacientes podología2",
+			"dates":"Marzo de 2015",
+			"description": "Sistema de ingreso de pacientes de podología",
+			"images": [ "url1","url2","url3"]
+		}	
 	]
-}
+};
 var formattedname = HTMLheaderName.replace("%data%", bio.name);
 $("#header").append(formattedname);
 var formattedrole =HTMLheaderRole.replace("%data%", bio.role);
 $("#header").append(formattedrole);
+var formattedimage = HTMLbioPic.replace("%data%", bio.pictureUrl);
+$("#header").append(formattedimage);
+var formattedmessage = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
+$("#header").append(formattedmessage);
 if (bio.skills.length >0){
 	$("#header").append(HTMLskillsStart);
 	var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
@@ -86,7 +93,24 @@ for (job in work.jobs){
 	$(".work-entry:last").append(formattedLocation);
 	var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 	$(".work-entry:last").append(formattedDescription);
-
-
 }
+ 
+//projects.display = function() {
+	for (each in projects.projects){
+		$("#projects").append(HTMLprojectsStart);
+		var formattedTittle = HTMLprojectTitle.replace("%data%", projects.projects[each].tittle);
+		$(".project-entry:last").append(formattedTittle);
+		var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[each].dates);
+		$(".project-entry:last").append(formattedDates);
+		var formattedDescription= HTMLprojectDescription.replace("%data%", projects.projects[each].description);
+		$(".project-entry:last").append(formattedDescription);
+		if (projects.projects[each].images.length >0){
+			for (images in projects.projets[each].images){
+				var formattedImages = HTMLprojectImage.replace("%data%", projects.projects[each].images);
+				$(".project-entry:last").append(formattedImages);
+			}
+		}
+
+	}
+//}
 
