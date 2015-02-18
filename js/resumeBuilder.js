@@ -16,19 +16,19 @@ var work ={
 	{
 		"employer": "Xerox de Chile",
 		"tittle":"Logistic planner", 
-		"dates": "December 2009- December 2014", "Description": "Santiago"
+		"dates": "December 2009- December 2014", "description": "Planner ", "location":"Santiago"
 	},
 
 	{
 		"employer": "Xerox de Chile",
 		"tittle":"Field Engineer", 
-		"dates": "November 1997- December 2009", "Description": "RT"
+		"dates": "November 1997- December 2009", "description": "RT", "location":"Santiago"
 	},
 
 	{
 		"employer": "Fuerza Aerea de Chile",
 		"tittle":" Electronics Technical", 
-		"dates": "January 1994- December 1997", "Description": "Santiago"
+		"dates": "January 1994- December 1997", "description": "Milico", "location":"Punta Arenas"
 	}
 	]}
 
@@ -74,3 +74,19 @@ if (bio.skills.length >0){
 	formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
 	$("#skills").append(formattedSkill);
 }
+for (job in work.jobs){
+	$("#workExperience").append(HTMLworkStart);
+	var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+	var formattedTittle = HTMLworkTitle.replace("%data%", work.jobs[job].tittle);
+	var formattedEmployerTitle = formattedEmployer + formattedTittle;
+	$(".work-entry:last").append(formattedEmployerTitle);
+	var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+	$(".work-entry:last").append(formattedDates);
+	var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+	$(".work-entry:last").append(formattedLocation);
+	var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+	$(".work-entry:last").append(formattedDescription);
+
+
+}
+
